@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="1"
-        android:text="注册界面"
+        android:text="注册"
         android:textColor="#000000"
         android:paddingVertical="9dp"
         android:gravity="center_horizontal"
@@ -116,20 +116,6 @@
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="3" />
-        <EditText
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:id="@+id/zc_code"
-            android:hint="请输入验证码"
-            android:textSize="15dp"
-            android:layout_marginHorizontal="10dp"/>
-        <ImageView
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:layout_marginHorizontal="10dp"
-            android:src="@drawable/ic_launcher_background"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -157,8 +143,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:text="再次输入密码"
+            android:layout_weight="1"
+            android:text="确认密码"
             android:layout_marginHorizontal="10dp"/>
         <EditText
             android:layout_width="wrap_content"

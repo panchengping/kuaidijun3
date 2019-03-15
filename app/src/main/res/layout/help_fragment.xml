@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="#1772b4"
+        android:text="跑腿"
+        android:textSize="20sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/display"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="#00ff00"
+        android:gravity="center"
+        android:text="这里是跑腿页面"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:textSize="30dp"/>
+
+</RelativeLayout>
