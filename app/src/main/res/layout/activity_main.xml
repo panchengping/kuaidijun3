@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--fragment组件-->
-    <fragment
-        android:id="@+id/fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.example.kuaidijun.ExpressFragment"/>
+    <!--不用fragment组件-->
 
+    <FrameLayout
+        android:id="@+id/main_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,18 +29,18 @@
             android:background="#0000"
             android:paddingBottom="18dp"
             android:paddingTop="10dp"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textColor="#2f90b9"/>
         <Button
             android:id="@+id/help"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="跑腿"
+            android:text="代取"
             android:background="#0000"
             android:paddingBottom="18dp"
             android:paddingTop="10dp"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textColor="#999"/>
         <Button
             android:id="@+id/appointment"
@@ -51,20 +51,19 @@
             android:background="#0000"
             android:paddingBottom="18dp"
             android:paddingTop="10dp"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textColor="#999"/>
         <Button
             android:id="@+id/other"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="个人中心"
+            android:text="设置"
             android:background="#0000"
             android:paddingBottom="18dp"
             android:paddingTop="10dp"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textColor="#999"/>
-
     </LinearLayout>
 
 

@@ -10,15 +10,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
+
 
 
 public class MainActivity extends Activity {
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+
+    FragmentManager fm;   // 获取Fragment管理对象
+    FragmentTransaction ft; // 开启一个事务
 
     Button expressBtn;
     Button helpBtn;
@@ -41,22 +42,21 @@ public class MainActivity extends Activity {
         sp=getSharedPreferences("login",MODE_PRIVATE);
         editor=sp.edit();
 
-        //为按键添加事件监听器
+        //初始化快递碎片页面
+        initFragment();
+        //为碎片按键添加事件监听器
         expressBtn.setOnClickListener(listenFragment);
         helpBtn.setOnClickListener(listenFragment);
         appointmentBtn.setOnClickListener(listenFragment);
         otherBtn.setOnClickListener(listenFragment);
-
-          TextView dis=findViewById(R.id.test);
-          dis.setText("hahaha");
 
         //判断是否自动跳转
         isLogined();
     }
     //判断是否自动跳转到登录界面
     public void isLogined(){
-        if (sp.getString("account","0").equals("123456")&&
-                sp.getString("password","0").equals("123456")){
+        if (sp.getString("account","").equals("123456")&&
+                sp.getString("password","").equals("123456")){
             Toast.makeText(this, "已经登录！", Toast.LENGTH_SHORT).show();
         }else{
             //通过intent指定跳转的页面,并销毁当前页面
@@ -67,23 +67,28 @@ public class MainActivity extends Activity {
         }
     }
 
-    //创建单机事件监听器
+    //初始化快递碎片
+    public void initFragment(){
+        fm = getFragmentManager();   // 获取Fragment
+        ft = fm.beginTransaction(); // 开启一个事务
+        Fragment f=new ExpressFragment();
+        ft.add(R.id.main_fragment,f);
+        ft.commit();
+    }
+    //创建切换碎片事件监听器
     View.OnClickListener listenFragment = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             toSetColor(v);//调用颜色设置函数
-            FragmentManager fm = getFragmentManager();   // 获取Fragment
-            FragmentTransaction ft = fm.beginTransaction(); // 开启一个事务
+            fm = getFragmentManager();   // 获取Fragment
+            ft = fm.beginTransaction(); // 开启一个事务
             Fragment f = null; //为Fragment初始化
             switch (v.getId()) {    //通过获取点击的id判断加载那个Fragment
                 case R.id.express:
                     f = new ExpressFragment(); //创建第一个Fragment
-                    //获取控件属性
-                    //LinearLayout.LayoutParams layoutParams=(LinearLayout.LayoutParams)expressBtn.getLayoutParams();
                     break;
                 case R.id.help:
                     f = new HelpFragment();//创建第二个Fragment
-
                     break;
                 case R.id.appointment:
                     f = new AppointmentFragment();//创建第三个Fragment
@@ -94,7 +99,7 @@ public class MainActivity extends Activity {
                 default:
                     break;
             }
-            ft.replace(R.id.fragment, f); //替换Fragment
+            ft.replace(R.id.main_fragment, f); //替换Fragment
             ft.commit(); //提交事务
         }
     };
@@ -121,4 +126,5 @@ public class MainActivity extends Activity {
                 break;
         }
     }
+
 }
